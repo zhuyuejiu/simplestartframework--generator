@@ -57,7 +57,8 @@ public class Global {
 	public  static String TEMP_DIR=CONFIG_DIR+"/"+TEMP;
 	public  static String PROJECT_NAME=prop.getProperty("project_name");
 	public  static String PROJECT_DIR=BASE_DRI+"/"+PROJECT_NAME;
-	public  static String OUT_DIR = BASE_DRI +"/"+ PROJECT_NAME + "/"+SRC_DIR;
+	//生成代码的根目录路径
+	public  static String OUT_DIR = BASE_DRI +"/"+ PROJECT_NAME + "/"+SRC_DIR+"/";
 	public  static String TEMPLATE_DIR = CONFIG_DIR+"/" + TEMP_DIR;
 	public  static String WEB_LIB_DIR=WEBINF_DIR+"/"+"lib";
 	public  static String METAINF_DIR=WEBINF_DIR+"/META-INF";

@@ -10,6 +10,7 @@ import java.util.Map;
 import org.apache.commons.io.FileUtils;
 import org.simplestartframework.generator.util.FileUtil;
 import org.simplestartframework.generator.util.Global;
+import org.simplestartframework.generator.util.StringUtil;
 
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
@@ -38,7 +39,7 @@ public class ProjectGenerate {
 		dirs.add(Global.METAINF_DIR);
 		dirs.add(Global.WEB_LIB_DIR);
 		dirs.add(Global.WEB_CONFIG_DIR);
-		dirs.add(Global.SRC_DIR+"/"+ Global.RESOURCE);
+		dirs.add(Global.RESOURCE);
 		
 		try {
 			File file = new File("./");
@@ -98,7 +99,7 @@ public class ProjectGenerate {
 	 */
 	public static void buildResources(){
 		try {
-			String dbResource = Global.PROJECT_DIR + "/" +Global.SRC_DIR+"/" + Global.RESOURCE;
+			String dbResource = Global.PROJECT_DIR + "/"  + Global.RESOURCE;
 			Template db = cfg.getTemplate(Global.TEMP_DIR + "/db.properties");
 			FileUtil.output(db, dbResource + "/db.properties", root);
 			Template log4j = cfg.getTemplate(Global.TEMP_DIR + "/log4j2.xml");
@@ -111,13 +112,13 @@ public class ProjectGenerate {
 
 
 	/**
-	 * 构建基于注解的Spring配置
+	 * 输出注解的配置类
 	 */
-	public static void buidSpringByAnnotation() {
+	public static void buidConfigByAnnotation() {
 		String template_dir = Global.TEMP_DIR + "/";
 		try {
 			
-			String configPath = Global.PROJECT_DIR + "/" + Global.SRC_DIR + "/" + Global.PACKAGE_PATH + "/config";
+			String configPath =Global.OUT_DIR +StringUtil.pointToslash(Global.PACKAGE_PATH)+ "/config";
 			File dir= FileUtils.getFile(configPath);
 			if(!dir.exists()||!dir.isDirectory()){
 				dir.mkdirs();
@@ -155,10 +156,7 @@ public class ProjectGenerate {
 		buidWebXml();
 		buildMateInf();
 		buildResources();
-		String template = Global.TEMP;
-		if (template.contains("annotation")) {
-			buidSpringByAnnotation();
-		}
+        buidConfigByAnnotation();
 		buildLib();
 
 	}

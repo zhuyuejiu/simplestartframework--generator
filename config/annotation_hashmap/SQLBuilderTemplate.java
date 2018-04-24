@@ -1,4 +1,4 @@
-package ${package_prefix}.mapper.provider;
+package ${package_prefix}.mapper.builder;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +9,7 @@ import java.util.Map;
  * @author ranger
  *
  */
-public class ${className}Provider {
+public class ${className}Builder {
 	
 	/**
 	 * 批量插入
@@ -23,7 +23,7 @@ public class ${className}Provider {
 		StringBuilder sb=new StringBuilder(sql);
 		for(int i=0;i<entitis.size();i++){
 			sb.append("(${providerBatchInsertValue})");
-			if(i<(entitis.get("list").size()-1)){
+			if(i<(entitis.size()-1)){
 				sb.append(",");
 			}
 		}
@@ -62,7 +62,7 @@ public class ${className}Provider {
 		StringBuilder sql = new StringBuilder();
 		for(int i=0;i<entitis.size();i++){
 			sql.append("UPDATE ${tableName} SET ${batchUpdateValue}");
-			if(i<(entitis.get("list").size()-1)){
+			if(i<(entitis.size()-1)){
 				sql.append(",");
 			}
 			sql.append("WHERE ${id}=${r"#"}{${id}}");

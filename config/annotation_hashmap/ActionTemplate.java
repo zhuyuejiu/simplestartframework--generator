@@ -1,12 +1,15 @@
-package ${package_prefix}.controller;
+package ${package_prefix}.action;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.context.annotation.Scope;
+import org.simplestartframwork.context.annotation.Inject;
+import org.simplestartframwork.context.annotation.component.Action;
+import org.simplestartframwork.web.annotation.PathMapping;
+import org.simplestartframwork.context.annotation.Scope;
 
-@Controller
+
+
+@Action
 @Scope("request")
-@RequestMapping("${feildName}")
+@PathMapping(value="/${feildName}")
 public class ${className}Action {
 
 }

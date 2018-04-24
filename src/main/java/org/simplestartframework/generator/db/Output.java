@@ -34,7 +34,9 @@ public class Output {
 	 * @param tables
 	 */
 	public static void create(List<Table> tables) {
-		String outDir = Global.OUT_DIR + "/" + Global.PACKAGE_PATH + "/";
+		String outDir =Global.OUT_DIR+StringUtil.pointToslash(Global.PACKAGE_PREFIX)+"/";
+		
+		System.out.println("输出根路径："+outDir);
 		Map<String, String> root = new HashMap<String, String>();
 		
 		root.put("package_prefix", StringUtil.slashToPoint(Global.PACKAGE_PREFIX));

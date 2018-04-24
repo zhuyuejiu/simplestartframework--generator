@@ -2,26 +2,12 @@ package ${package_prefix}.mapper;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.DeleteBuilder;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.InsertBuilder;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectBuilder;
-import org.apache.ibatis.annotations.Update;
-import org.apache.ibatis.annotations.UpdateBuilder;
-import org.apache.ibatis.session.RowBounds;
 import org.simplestartframwork.context.annotation.component.Persistent;
+import org.simplestartframwork.data.annotation.Options;
 import org.simplestartframwork.data.annotation.SQL;
-import org.simplestartframwork.data.annotation.SQLBuilder;
 import org.simplestartframwork.data.annotation.SQL.SQLType;
-import org.springframework.stereotype.Repository;
-
-import com.gb.mapper.Builder.ModularBuilder;
-
-import ${package_prefix}.mapper.Builder.${className}Builder;
+import org.simplestartframwork.data.annotation.SQLBuilder;
+import ${package_prefix}.mapper.builder.${className}Builder;
 
 /**
  * ${tableName}表操作映射接口
@@ -46,7 +32,7 @@ public interface ${className}Mapper {
 	  * @param entitis -->${insertHeader}
 	  * @return
 	  */
-	@SQLBuilder(type=${className}Builder.class,method="batchInsert")
+	@SQLBuilder(classes=${className}Builder.class,method="batchInsert")
 	int batchInsert(List<Map<String,Object>> entitis);
 	
 	/**
@@ -54,7 +40,7 @@ public interface ${className}Mapper {
 	 * @param entity -->${insertHeader}
 	 * @return
 	 */
-	@SQLBuilder(type=${className}Builder.class,method="deleteByIds")
+	@SQLBuilder(classes=${className}Builder.class,method="deleteByIds")
 	int deleteByIds(Object[] ids);
 	
 	/**
@@ -78,7 +64,7 @@ public interface ${className}Mapper {
 	  * @param entitis -->${insertHeader}
 	  * @return
 	  */
-	@SQLBuilder(type=${className}Builder.class,method="batchUpdate")
+	@SQLBuilder(classes=${className}Builder.class,method="batchUpdate")
 	int batchUpdate(List<Map<String,Object>> entitis);
 	
 	 /**
@@ -102,7 +88,7 @@ public interface ${className}Mapper {
 	 * @param ids
 	 * @return
 	 */
-	@SQL(type=SQLType.SELECT,type=${className}Builder.class,method="findByIds")
+	@SQLBuilder(classes=${className}Builder.class,method="findByIds")
 	List<Map<String,Object>>  findByIds(Object... ids);
 	
 
@@ -111,7 +97,7 @@ public interface ${className}Mapper {
 	 * @param entity
 	 * @return
 	 */
-	@SQLBuilder(type=${className}Builder.class,method="findByEntity")
+	@SQLBuilder(classes=${className}Builder.class,method="findByEntity")
 	List<Map<String, Object>> findByEntity(Map<String, Object> entity);
 	/**
 	 * 
@@ -119,7 +105,7 @@ public interface ${className}Mapper {
 	 * @param entity
 	 * @return
 	 */
-	@SQLBuilder(type=${className}Builder.class,method="count")
+	@SQLBuilder(classes=${className}Builder.class,method="count")
 	int count(Map<String, Object> entity);
 	/**
 	 * 
@@ -127,7 +113,7 @@ public interface ${className}Mapper {
 	 * @param entity
 	 * @return
 	 */
-	@SQLBuilder(type=${className}Builder.class,method="findByEntityLikePage")
+	@SQLBuilder(classes=${className}Builder.class,method="findByEntityLikePage")
 	List<Map<String, Object>> findByEntityLikePage(Map<String, Object> entity);
 	/**
 	 * 
@@ -135,7 +121,7 @@ public interface ${className}Mapper {
 	 * @param entity
 	 * @return
 	 */
-	@SQLBuilder(type=${className}Builder.class,method="findByEntityLike")
+	@SQLBuilder(classes=${className}Builder.class,method="findByEntityLike")
 	List<Map<String, Object>> findByEntityLike(Map<String, Object> entity);
 	
 
